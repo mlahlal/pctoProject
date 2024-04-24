@@ -1,0 +1,130 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.brand {
+    text-align: center;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu .menu_voice {
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 60%;
+    padding: 15px 25px;
+    border-radius: 15px;
+}
+
+.menu .active_voice {
+    background-color: rgb(3, 64, 233);
+}
+
+.menu .menu_voice:hover {
+    background-color: rgb(83, 83, 83);
+}
+
+#main {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80vw;
+    height: 100vh;
+    background-color: white;
+}
+
+#navWrapper {
+    display: flex;
+    width: 80vw;
+    position: fixed;
+    flex-direction: row-reverse;
+    z-index: 99;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+#navWrapper #actual_page {
+    margin-left: 5vw;
+}
+
+#nav {
+    width: 23vw;
+    height: 5vh;
+    border-radius: 500px;
+    display: flex;
+    margin-right: 2vw;
+    background-color: darkgray;
+    padding: 10px 25px;
+    justify-content: space-between;
+    z-index: 99;
+}
+
+#nav #search {
+    width: 250px;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 500px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.icon {
+    width: 35px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+#nav #theme {
+    width: 50px;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 500px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+#nav #profile {
+    width: 50px;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 500px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+#profilePopup {
+    position: absolute;
+    width: 5vw;
+    height: 10vh;
+    right: 3vw;
+    top: 9.2vh;
+    border: 2px solid black;
+    border-radius: 15px;
+    transition: all .5s ease-in;
+}
+
+#content {
+    height: 85vh;
+    width: 90%;
+    margin-left: 50%;
+    margin-top: 12vh;
+    transform: translate(-50%, -0%);
+    z-index: 10;
+}
