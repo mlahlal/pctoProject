@@ -1,4 +1,7 @@
 <?php
+    require_once 'middleware/auth.php';
+    checkAuth();
+
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $servername = "localhost";
@@ -32,15 +35,7 @@
     <title>PCTO By Lahlal</title>
 </head>
 <body>
-<div id="sidebar">
-        <h1 class="brand">PCTO By Lahlal</h1>
-        <ul class="menu">
-            <li class="menu_voice active_voice">Voice 1</li>
-            <li class="menu_voice">Voice 2</li>
-            <li class="menu_voice">Voice 3</li>
-            <li class="menu_voice">Voice 4</li>
-        </ul>
-    </div>
+    <?php include 'components/sidebar.php'; ?>
     <div id="main">
         <div id="navWrapper">
             <div id="nav">

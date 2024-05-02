@@ -1,13 +1,9 @@
 <?php
-    session_start();
-    
-    if (isset($_SESSION["logged"])) {
-        if ($_SESSION["logged"] == false) {
-            header('Location: login.php');    
-        }
-    } else {
-        header('Location: login.php');
-    }
+    require_once 'middleware/auth.php';
+    checkAuth();
+
+    $trendBusiness = [["name"=>"Google", "ambito"=>"informatica", "sede"=>"Milano"], ["name"=>"Microsoft", "ambito"=>"informatica", "sede"=>"Milano"]];
+    $newBusiness = [["name"=>"Feralpi", "ambito"=>"meccanica", "sede"=>"Lonato"]];
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pcto by mouad</title>
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
     <script>
         function changeTheme() {
             var themeIcon = document.getElementById("themeIcon");
@@ -30,29 +26,18 @@
     </script>
 </head>
 <body>
-    <div id="sidebar">
-        <h1 class="brand">PCTO By Lahlal</h1>
-
-        <ul class="menu">
-            <li class="menu_voice active_voice">Voice 1</li>
-            <li class="menu_voice">Voice 2</li>
-            <li class="menu_voice">Voice 3</li>
-            <li class="menu_voice">Voice 4</li>
-        </ul>
-    </div>
+    <?php include 'components/sidebar.html';?>
     <div id="main">
         <div id="navWrapper">
             <div id="nav">
                 <span id="search">
                     <img src="./assets/svg/search.svg" alt="search icon" class="icon" >
-                    <!-- <input type="text" name="txtsearch" id="txtsearch"> -->
                 </span>
                 <span id="theme" onclick="changeTheme();">
                     <img src="./assets/svg/sun.svg" alt="theme icon" class="icon" id="themeIcon">
                 </span>
                 <span id="profile">
                     <img src="./assets/svg/avatar.svg" alt="avatar icon" class="icon">
-                    <!-- <span id="profilePopup"></span> -->
                 </span>
             </div>
             <h1 id="actual_page">Aziende</h1>
@@ -69,25 +54,21 @@
             <div id="trends">
                 <h1>Aziende in tendenza</h1>
                 <div class="business_list">
-                    <a href="business.php?idbusiness=blablabla">
-                        <div class="business_card">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s" alt="business logo">
-                            <h3>Google</h3>
-                            <h5>Ambito: informatica</h5>
-                            <h5>Sede: Brescia (BS)</h5>
-                        </div>
-                    </a>
+                    <?php
+                        foreach ($trendBusiness as $business) {
+                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
+                        }
+                    ?>
                 </div>
             </div>
             <div id="new">
                 <h1>Nuove aziende</h1>
                 <div class="business_list">
-                    <div class="business_card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s" alt="business logo">
-                        <h3>Google</h3>
-                        <h5>Ambito: informatica</h5>
-                        <h5>Sede: Brescia (BS)</h5>
-                    </div>
+                    <?php
+                        foreach ($newBusiness as $business) {
+                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>

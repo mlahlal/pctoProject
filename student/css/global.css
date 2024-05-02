@@ -2,40 +2,7 @@ body {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-}
-
-#sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 15vw;
-    height: 100vh;
-    background-color: black;
-    color: white;
-}
-
-.brand {
-    text-align: center;
-}
-
-.menu {
-    list-style: none;
-}
-
-.menu .menu_voice {
-    margin-bottom: 20px;
-    cursor: pointer;
-    width: 60%;
-    padding: 15px 25px;
-    border-radius: 15px;
-}
-
-.menu .active_voice {
-    background-color: rgb(3, 64, 233);
-}
-
-.menu .menu_voice:hover {
-    background-color: rgb(83, 83, 83);
+    background-color: rgb(244 247 254);
 }
 
 #main {
@@ -44,7 +11,8 @@ body {
     top: 0;
     width: 80vw;
     height: 100vh;
-    background-color: white;
+    /* background-color: white; */
+    background-color: rgb(244 247 254);
 }
 
 #navWrapper {
@@ -70,7 +38,7 @@ body {
     display: flex;
     margin-right: 2vw;
     background-color: darkgray;
-    padding: 10px 25px;
+    padding: 15px 20px;
     justify-content: space-between;
     z-index: 99;
 }

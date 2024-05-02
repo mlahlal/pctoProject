@@ -29,12 +29,18 @@
 }
 
 .business_card {
-    border: 1px solid black;
     border-radius: 20px;
     width: fit-content;
     padding: 20px 30px;
     text-align: center;
     cursor: pointer;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.business_card a {
+    text-decoration: none;
+    color: black;
 }
 
 .business_card img {

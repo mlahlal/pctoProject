@@ -1,0 +1,64 @@
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let path = window.location.pathname.split("/")[2];
+        let obj = document.getElementById(path);
+        for (const child of document.getElementsByClassName("menu")[0].children) {
+            obj ? child.classList.remove("active_voice") : null;
+            child.addEventListener("click", (e) => {
+                window.location = e.target.id;
+            });
+        }
+        if (obj) {
+            obj.classList.add("active_voice");
+        } else {
+            document.getElementById("index.php").classList.add("active_voice");
+        }
+    })
+</script>
+
+<style>
+    #sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 15vw;
+        height: 100vh;
+        background-color: black;
+        color: white;
+    }
+
+    .brand {
+        text-align: center;
+    }
+
+    .menu {
+        list-style: none;
+    }
+
+    .menu .menu_voice {
+        margin-bottom: 20px;
+        cursor: pointer;
+        width: 60%;
+        padding: 15px 25px;
+        border-radius: 15px;
+    }
+
+    .menu .active_voice {
+        background-color: rgb(3, 64, 233);
+    }
+
+    .menu .menu_voice:hover {
+        background-color: rgb(83, 83, 83);
+    }
+</style>
+
+<div id="sidebar">
+    <h1 class="brand">PCTO By Lahlal</h1>
+
+    <ul class="menu">
+        <li class="menu_voice" id="index.php">Home</li>
+        <li class="menu_voice" id="search.php">Search</li>
+        <li class="menu_voice">Voice 3</li>
+        <li class="menu_voice">Voice 4</li>
+    </ul>
+</div>
