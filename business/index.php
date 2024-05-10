@@ -1,5 +1,5 @@
 <?php
-    require_once 'middleware/auth.php';
+    require_once '../middleware/auth.php';
     checkAuth();
 ?>
 
@@ -25,47 +25,29 @@
 <body>
     <?php include 'components/sidebar.html';?>
     <div id="main">
-        <div id="navWrapper">
-            <div id="nav">
-                <span id="search">
-                    <img src="./assets/svg/search.svg" alt="search icon" class="icon" >
-                </span>
-                <span id="theme" onclick="changeTheme();">
-                    <img src="./assets/svg/sun.svg" alt="theme icon" class="icon" id="themeIcon">
-                </span>
-                <span id="profile">
-                    <img src="./assets/svg/avatar.svg" alt="avatar icon" class="icon">
-                </span>
-            </div>
-            <h1 id="actual_page">Aziende</h1>
-        </div>
+        <?php include 'components/navbar.html'; ?>
         <div id="content">
             <div id="hero">
-                <h1>Esplora, scegli e lavora</h1>
-                <h4>Trova l'azienda che più ti piace e manda la tua richiesta</h4>
-                <span>
-                    <button>Esplora adesso</button>
-                    <button>Tutorial</button>
-                </span>
+                <h1>Statistiche</h1>
+                <h4>Usa questi dati per aumentare qualcosa e diventare il G.O.A.T</h4>
             </div>
-            <div id="trends">
-                <h1>Aziende in tendenza</h1>
-                <div class="business_list">
-                    <?php
-                        foreach ($trendBusiness as $business) {
-                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
-                        }
-                    ?>
+            <br><br>
+            <div id="boxes">
+                <div class="infoBox">
+                    <span class="info">59</span>
+                    <span class="comment">Projects</span>
                 </div>
-            </div>
-            <div id="new">
-                <h1>Nuove aziende</h1>
-                <div class="business_list">
-                    <?php
-                        foreach ($newBusiness as $business) {
-                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
-                        }
-                    ?>
+                <div class="infoBox">
+                    <span class="info">5</span>
+                    <span class="comment">Students</span>
+                </div>
+                <div class="infoBox">
+                    <span class="info">74%</span>
+                    <span class="comment">Conversione</span>
+                </div>
+                <div class="infoBox">
+                    <span class="info">17</span>
+                    <span class="comment">Anni di collaborazione</span>
                 </div>
             </div>
         </div>

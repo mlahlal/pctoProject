@@ -43,7 +43,7 @@
                         # code...
                         break;
                 }
-                header('Location: index.php');
+                header('Location: ../business/index.php');
             } else {
                 echo "Credenziali errate";
             }
@@ -62,10 +62,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pcto by mouad</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <form action="login.php" method="POST">
+    <form action="index.php" method="POST">
         <input type="email" name="mail" id="mail" placeholder="email" required>
         <input type="password" name="psw" id="psw" placeholder="password" required>
         <input type="submit" value="login">
