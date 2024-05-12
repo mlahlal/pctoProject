@@ -3,7 +3,7 @@
     height: 150px;
     background-color: rgb(3, 64, 233);
     position: relative;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 #profilePic {
@@ -87,8 +87,6 @@
     opacity: .45;
 }
 
-.projectLink {
+.projectDesc {
     text-decoration: none;
-    color: rgb(3, 64, 233);
-
 }

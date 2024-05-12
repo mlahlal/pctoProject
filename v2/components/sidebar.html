@@ -10,10 +10,8 @@
     }
 
     #nav-bar {
-	width: 15vw;
-        left: 1vw;
-        top: 1vw;
-        height: calc(100% - 2vw);
+	    width: 15vw;
+        height: calc(100% - 1vw);
         background: var(--navbar-dark-primary);
         border-radius: 16px;
         display: flex;
@@ -73,6 +71,9 @@
         direction: rtl;
         overflow-x: hidden;
         transition: width 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5vh;
     }
 
     .nav-button {
@@ -103,7 +104,6 @@
     .nav-button:hover::before {
         content: "";
         position: absolute;
-        transition: all .3s;
         
         background-color: transparent;
         right: 0px;
@@ -116,7 +116,6 @@
     .nav-button:hover::after {
         content: "";
         position: absolute;
-        transition: all .3s;
         
         background-color: transparent;
         right: 0px;
@@ -136,7 +135,6 @@
     .nav-button-active::before {
         content: "";
         position: absolute;
-        transition: all .3s;
         
         background-color: transparent;
         right: 0px;
@@ -149,7 +147,6 @@
     .nav-button-active::after {
         content: "";
         position: absolute;
-        transition: all .3s;
         
         background-color: transparent;
         right: 0px;
@@ -236,7 +233,7 @@
 	<?php
 		foreach ($voices as $voice) {
 	 		?>
-			<div class="nav-button"><span><?php echo $voice; ?></span></div>
+			<div class="nav-button" id="nav-<?php echo $voice; ?>"><i class="fas fa-palette"></i><span><?php echo $voice; ?></span></div>
 			<?php
 	 	}
 	?>
@@ -299,13 +296,24 @@
 </div>
 
 <script>
-    const navBtn = document.querySelectorAll(".nav-button");
-    navBtn.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            navBtn.forEach((tab_temp) => {
-                tab_temp.classList.remove("nav-button-active");
+    document.addEventListener("DOMContentLoaded", () => {
+        const navBtn = document.querySelectorAll(".nav-button");
+        document.querySelectorAll("main").forEach((frame) => {
+            frame.style.display = "none";
+        });
+        document.getElementById("<?php echo $voices[0] ?>").style.display = "block";
+        document.getElementById(<?php echo "'nav-".$voices[0]."'" ?>).classList.add("nav-button-active");
+        navBtn.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                navBtn.forEach((tab_temp) => {
+                    tab_temp.classList.remove("nav-button-active");
+                });
+                tab.classList.add("nav-button-active");
+                document.querySelectorAll("main").forEach((frame) => {
+                    frame.style.display = "none";
+                });
+                document.getElementById(tab.textContent).style.display = "block";
             });
-            tab.classList.add("nav-button-active");
         });
     });
 </script>

@@ -18,7 +18,7 @@
     gap: 5vw;
 }
 
-#search {
+#search_input {
     padding: 10px 30px;
     border: none;
     border-radius: 25px;
@@ -54,6 +54,6 @@
 }
 
 h5 {
-    font-size: larger;
+    /* font-size: larger; */
     z-index: 99;
 }

@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="css/business.css">
+
+<main id="Business">
+    <div id="content">
+        <div id="banner">
+            <div id="profilePic">
+                <img src="assets/svg/avatar.svg" alt="profile picture">
+            </div>
+        </div>
+        <h1 id="businessName"></h1>
+        <div id="boxes">
+            <div class="infoBox">
+                <h2>Informazioni</h2>
+                <div class="info">
+                    <span class="infoTitle"> Ragione sociale </span>
+                    <span> <?php echo $id_business; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Rappresentante </span>
+                    <span> <?php echo "Andrea Schinocca"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Ambito </span>
+                    <span> <?php echo "Informatica"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Numero dipendenti </span>
+                    <span> <?php echo "420"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Sede </span>
+                    <span> <?php echo "Non Parla Proprio (NPP)"; ?> </span>
+                </div>
+            </div>
+            <div class="infoBox" id="projects">
+                <h2>Progetti</h2>
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis quisquam alias, modi nihil eligendi beatae aspernatur maxime aliquam soluta excepturi saepe maiores impedit, dignissimos, temporibus quod fugit laudantium fugiat ipsa.</span>
+                <!-- <div class="project">
+                    <span class="projectTitle">Nome progetto</span>
+                    <div>
+                        <span class="projectStart">Data inizio</span>
+                        <a href="" class="projectLink">Visualizza</a>
+                    </div>
+                    <img src="assets/svg/emptystar.svg" alt="star icon" onclick="handleStar()">
+                </div>
+                <div class="project">
+                    <span class="projectTitle">Nome progetto</span>
+                    <div>
+                        <span class="projectStart">Data inizio</span>
+                        <a href="" class="projectLink">Visualizza</a>
+                    </div>
+                    <img src="assets/svg/filledstar.svg" alt="star icon">
+                </div>
+                <div class="project">
+                    <span class="projectTitle">Nome progetto</span>
+                    <div>
+                        <span class="projectStart">Data inizio</span>
+                        <a href="" class="projectLink">Visualizza</a>
+                    </div>
+                    <img src="assets/svg/emptystar.svg" alt="star icon">
+                </div> -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function prjSuccess(response) {
+        document.getElementById("projects").innerHTML = "";
+        response.map((project) => {
+            let prj = document.createElement("div");
+            let prjTitle = document.createElement("span");
+            // let div = document.createElement("div");
+            // let prjStart = document.createElement("span");
+            let prjDesc = document.createElement("a");
+            // let img = document.createElement("img");
+
+            prj.classList.add("project");
+            prjTitle.classList.add("projectTitle");
+            // prjStart.classList.add("projectStart");
+            prjDesc.classList.add("projectLink");
+
+            prjTitle.innerText = project.title;
+            prjDesc.innerText = project.description;
+
+            // div.appendChild(prjStart);
+            // div.appendChild(prjDesc);
+
+            prj.appendChild(prjTitle);
+            prj.appendChild(prjDesc);
+
+            document.getElementById("projects").appendChild(prj);
+        });
+    }
+
+    window.addEventListener("NewBusinessEvent", function() {
+        let business = JSON.parse(localStorage.getItem("business"));
+        document.getElementById("businessName").innerText = business.name;
+        $.ajax({
+            url: './includes/student.php',
+            type: 'post',
+            data: { "getProjects": "1", "id_business": business.id_business},
+            success: prjSuccess
+        });
+    });
+</script>

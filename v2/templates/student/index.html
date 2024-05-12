@@ -11,7 +11,7 @@
     }
 </script>
 
-<main>
+<main id="Dashboard">
         <!--<div id="navWrapper">
             <div id="nav">
                 <span id="search">
@@ -40,7 +40,7 @@
                 <div class="business_list">
                     <?php
                         foreach ($trendBusiness as $business) {
-                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
+                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='".$business["logo"]."' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["field"]."</h5> <h5>Sede: ".$business["city"]."</h5> </a> </div>";
                         }
                     ?>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="business_list">
                     <?php
                         foreach ($newBusiness as $business) {
-                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQafX9X4oVKEEpBfQvuaw-VyYNuaYCyzhRwght_1_JfmA&s' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["ambito"]."</h5> <h5>Sede: ".$business["sede"]."</h5> </a> </div>";
+                            echo "<div class='business_card'> <a href='business.php?idbusiness=".$business["name"]."'> <img src='".$business["logo"]."' alt='business logo'> <h3>".$business["name"]."</h3> <h5>Ambito: ".$business["field"]."</h5> <h5>Sede: ".$business["city"]."</h5> </a> </div>";
                         }
                     ?>
                 </div>

@@ -1,9 +1,5 @@
 <?php
-    require_once 'middleware/auth.php';
-    require_once 'utils/db.php';
-    checkAuth();
-
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $search = $_GET["search"];
         $regione = $_GET["regione"];
         $provincia = $_GET["provincia"];
