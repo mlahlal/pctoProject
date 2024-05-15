@@ -1,6 +1,6 @@
 <?php
 	function check_auth() {
-		//require("db.php");
+		require_once("db.php");
 		session_start();
 		$_SESSION["logged"] = true;
 		$_SESSION["id"] = "32182708-0547-11ef-a34e-c62f196bb7a8";

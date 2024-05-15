@@ -1,6 +1,6 @@
 <?php
 	require "./includes/auth.php";
-    require "./includes/student.php";
+    require "./includes/stdFunc.php";
     
 	check_auth();
 	

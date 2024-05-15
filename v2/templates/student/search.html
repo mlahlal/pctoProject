@@ -1,12 +1,11 @@
 <link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet" href="css/global.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <main id="Search">
-    <div id="content">
-        <div id="hero">
+    <div class="content">
+        <div class="hero">
             <h1>Cerca l'azienda che fa per te</h1>
-            <div id="searchWrapper">
+            <div class="searchWrapper">
                 <input type="text" placeholder="Search" id="search_input" name="search">
                 <select name="regione" id="regione">
                     <option value="lombardia">lombardia</option>
@@ -21,8 +20,8 @@
                 <button id="searchbtn">SEARCH</button>
             </div>
         </div>
-        <div class="tempclass">
-            <div id="searchResult" class="business_list">
+        <div style="margin-top: 3vh;">
+            <div id="searchResult" class="cardList">
                 <span></span>
             </div>
         </div>
@@ -40,7 +39,7 @@
             let businessField = document.createElement("h5");
             let businessHeadQuarter = document.createElement("h5");
 
-            business.classList.add("business_card");
+            business.classList.add("card");
             link.href = "";
             link.id = obj.id_business;
             img.src = obj.logo;
@@ -75,7 +74,7 @@
             let regione = document.getElementById("regione").value;
             let provincia = document.getElementById("provincia").value;
             $.ajax({
-                url: './includes/student.php',
+                url: './includes/stdFunc.php',
                 type: 'post',
                 data: { "searchBusiness": "1", "search": searchtxt, "regione": regione, "provincia": provincia},
                 success: searchSuccess

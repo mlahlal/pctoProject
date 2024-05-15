@@ -77,15 +77,35 @@ create table if not exists business (
 );
 
 create table if not exists project (
-  id_project varchar(255) primary key,
+  id_project varchar(255) primary key default (uuid()),
   title varchar(255),
   description text,
+  accepted boolean,
   id_business varchar(255),
   foreign key (id_business) references business (id_business)
 );
 
+create table if not exists requests (
+  id_request varchar(255) primary key default (uuid()),
+  accepted boolean,
+  id_project varchar(255),
+  id_user varchar(255),
+  foreign key (id_project) references project (id_project),
+  foreign key (id_user) references users (id_user)
+);
+
+create table if not exists pcto (
+  id_pcto varchar(255) primary key default (uuid()),
+  id_business varchar(255),
+  id_project varchar(255),
+  id_user varchar(255),
+  foreign key (id_business) references business (id_business),
+  foreign key (id_project) references project (id_project),
+  foreign key (id_user) references users (id_user)
+);
+
 create table if not exists analytic (
-  id_analytic varchar(255) primary key,
+  id_analytic varchar(255) primary key default (uuid()),
   --type analytic_type,
   id_business varchar(255),
   id_school varchar(255),

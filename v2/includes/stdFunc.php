@@ -32,10 +32,21 @@
         return json_encode($result);
     }
 
+    function postApply() {
+        $query = "INSERT INTO requests (accepted, id_project, id_user) VALUES (false, '".$_POST["id_project"]."', '".$_POST["id_user"]."')"; // bisogna aggiungere la richiesta di pcto dello studente all'azienda che vuole
+        $result = query($query);
+        //$result = ["message"=>"nik ommok"];
+        header('Content-Type: application/json');
+        return json_encode($result);
+    }
+
     if (isset($_POST["searchBusiness"])) {
         echo searchBusiness();
     }
     if (isset($_POST["getProjects"])) {
         echo getProjects();
+    }
+    if (isset($_POST["postApply"])) {
+        echo postApply();
     }
 ?>
