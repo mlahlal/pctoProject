@@ -1,0 +1,43 @@
+<main id="Student">
+    <div class="content">
+        <div class="banner">
+            <div class="profilePic">
+                <img src="assets/svg/avatar.svg" alt="profile picture">
+            </div>
+        </div>
+        <h1 class="profileName">ME MEDESIMO</h1>
+        <div class="boxes">
+            <div class="infoBox">
+                <h2>Informazioni</h2>
+                <div class="info">
+                    <span class="infoTitle"> Ragione sociale </span>
+                    <span> <?php echo $id_business; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Rappresentante </span>
+                    <span> <?php echo "Andrea Schinocca"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Ambito </span>
+                    <span> <?php echo "Informatica"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Numero dipendenti </span>
+                    <span> <?php echo "420"; ?> </span>
+                </div>
+
+                <div class="info">
+                    <span class="infoTitle"> Sede </span>
+                    <span> <?php echo "Non Parla Proprio (NPP)"; ?> </span>
+                </div>
+            </div>
+        </div>
+        <div class="infoActions">
+            <button class="infoAction" id="btnRifiuta">RIFIUTA</button>
+            <button class="infoAction" id="btnAccetta">ACCETTA</button>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,86 @@
+{
+    "regions": [
+        "Abruzzo",
+        "Basilicata",
+        "Calabria",
+        "Campania",
+        "Emilia-Romagna",
+        "Friuli-Venezia Giulia",
+        "Lazio",
+        "Liguria",
+        "Lombardia",
+        "Marche",
+        "Molise",
+        "Piemonte",
+        "Puglia",
+        "Sardegna",
+        "Sicilia",
+        "Toscana",
+        "Trentino-Alto Adige",
+        "Umbria",
+        "Valle d'Aosta",
+        "Veneto"
+    ],
+    "provinces": {
+        "Abruzzo" : {
+            "province": ["Chieti", "L'Aquila", "Pescara", "Teramo"]
+        },
+        "Basilicata": {
+            "province": ["Matera", "Potenza"]
+        },
+        "Calabria": {
+            "province": ["Catanzaro", "Cosenza", "Crotone", "Reggio Calabria", "Vibo Valentia"]
+        },
+        "Campania": {
+            "province": ["Avellino", "Benevento", "Caserta", "Napoli", "Salerno"]
+        },
+        "Emilia-Romagna": {
+            "province": ["Bologna", "Ferrara", "Forlì-Cesena", "Modena", "Parma", "Piacenza", "Ravenna", "Reggio Emilia", "Rimini"]
+        },
+        "Friuli-Venezia Giulia": {
+            "province": ["Gorizia", "Pordenone", "Trieste", "Udine"]
+        },
+        "Lazio": {
+            "province": ["Frosinone", "Latina", "Rieti", "Roma", "Viterbo"]
+        },
+        "Liguria": {
+            "province": ["Genova", "Imperia", "La Spezia", "Savona"]
+        },	
+        "Lombardia": {
+            "province": ["Bergamo", "Brescia", "Como", "Cremona", "Lecco", "Lodi", "Mantova", "Milano", "Monza e Brianza", "Pavia", "Sondrio", "Varese"]
+        },
+        "Marche": {
+            "province": ["Ancona", "Ascoli Piceno", "Fermo", "Macerata", "Pesaro e Urbino"]
+        },
+        "Molise": {
+            "province": ["Campobasso", "Isernia"]
+        },
+        "Piemonte": {
+            "province": ["Alessandria", "Asti", "Biella", "Cuneo", "Novara", "Torino", "Verbano Cusio Ossola", "Vercelli"]
+        },
+        "Puglia": {
+            "province": ["Bari", "Barletta-Andria-Trani", "Brindisi", "Lecce", "Foggia", "Taranto"]
+        },
+        "Sardegna": {
+            "province": ["Cagliari", "Carbonia-Iglesias", "Medio Campidano", "Nuoro", "Ogliastra", "Olbia-Tempio", "Oristano", "Sassari"]
+        },
+        "Sicilia": {
+            "province": ["Agrigento", "Caltanissetta", "Catania", "Enna", "Messina", "Palermo", "Ragusa", "Siracusa", "Trapani"]
+        },
+        "Toscana": {
+            "province": ["Arezzo", "Firenze", "Grosseto", "Livorno", "Lucca", "Massa e Carrara", "Pisa", "Pistoia", "Prato", "Siena"]
+        },
+        "Trentino-Alto Adige": {
+            "province": ["Bolzano", "Trento"]
+        },
+        "Umbria": {
+            "province": ["Perugia", "Terni"]
+        },
+        "Valle d'Aosta": {
+            "province": ["Aosta"]
+        },
+        "Veneto": {
+            "province": ["Belluno", "Padova", "Rovigo", "Treviso", "Venezia", "Verona", "Vicenza"]
+        }
+    }
+}
