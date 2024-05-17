@@ -1,9 +1,34 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/business.js"></script>
-<link rel="stylesheet" href="css/global2.css">
+<link rel="stylesheet" href="css/global2.css" />
 
 <main id="Dashboard">
-	<div id="content">
-		<span>qua metterò delle belle statistichine</span>
-	</div>
+    <div class="content">
+        <div class="rectangleList">
+            <h2>STATISTICHE</h2>
+            <div class="cardList" style="justify-content: space-around">
+                <div class="stats">
+                    <span class="statsVal">5</span>
+                    <span class="statsSub">studenti</span>
+                </div>
+                <div class="stats">
+                    <span class="statsVal">5</span>
+                    <span class="statsSub">richieste</span>
+                </div>
+                <div class="stats">
+                    <span class="statsVal">5</span>
+                    <span class="statsSub">progetti</span>
+                </div>
+            </div>
+			<h2>STUDENTI ATTIVI</h2>
+			<span>Non ci sono studenti attivi in questo momento</span>
+			<div class="rectangle">
+				<span><a href="" style="color: white;" id="<?php echo $request['id_user']; ?>"><?php echo $request["name"] . " " . $request["surname"];?></a></span>
+				<div class="rectangleContent">
+					<span class="rectangleDesc"><?php echo $request["id_school"] . " " . $request["province"];?></span>
+					<span class="rectangleSubtitle"><?php echo $request["created_at"];?></span>
+				</div>
+			</div>
+        </div>
+    </div>
 </main>

@@ -114,6 +114,7 @@ main {
     flex-direction: row;
     gap: 2vw;
     overflow-x: scroll;
+    padding: 10px;
 }
 .card {
     /* border-radius: 20px; */
@@ -294,6 +295,9 @@ main {
     font-size: 16px;
     color: #333;
 }
+.select option {
+    color: black;
+}
 /* .searchWrapper button { */
 button {
     background-color: white;
@@ -339,4 +343,23 @@ button:hover {
 }
 .blur {
 	filter: blur(10px);
+}
+
+/* STATS */
+.stats {
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    padding: 1.5rem 3rem;
+}
+.statsVal {
+    font-size: 5rem;
+    text-align: center;
+}
+.statsSub {
+    font-size: 1.5rem;
+    font-style: italic;
+    opacity: .7;
 }

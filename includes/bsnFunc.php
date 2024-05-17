@@ -2,16 +2,14 @@
     require("db.php");
 
     function getStudentRequests() {
-        $sql = "SELECT * FROM requests";
+        $sql = "SELECT * FROM requests JOIN users ON requests.id_user = users.id_user";
         $data = [];
         $result = query($sql, $data);
-        header('Content-Type: application/json');
-        return json_encode($result);
+        return $result;
     }
 
     function newProject() {
         header('Content-Type: application/json');
-        // $query = "INSERT INTO project (title, description, id_business) VALUES ('$title', '$desc', '$id_business')";
         $sql = "INSERT INTO project (title, description, id_business) VALUES (?, ?, ?)";
         $data = [$_POST["titolo"], $_POST["descrizione"], $_POST["id_business"]];
         $result = query($sql, $data);
@@ -50,6 +48,14 @@
         return json_encode($result);
     }
 
+    function getStudentInfo() {
+        header('Content-Type: application/json');
+        $sql = "SELECT * FROM users WHERE id_user=?";
+        $data = [$_POST["id_user"]];
+        $result = query($sql, $data);
+        return json_encode($result);
+    }
+
     if (isset($_POST["getStudentRequests"])) {
         echo getStudentRequests();
     }
@@ -64,5 +70,8 @@
     }
     if (isset($_POST["refuseRequest"])) {
         echo refuseRequest();
+    }
+    if (isset($_POST["getStudentInfo"])) {
+        echo getStudentInfo();
     }
 ?>

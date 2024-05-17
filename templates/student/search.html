@@ -4,15 +4,21 @@
             <h1>Cerca l'azienda che fa per te</h1>
             <div class="searchWrapper">
                 <input type="text" placeholder="Search" id="search_input" name="search" class="txtinput">
-                <select name="regione" id="regione" class="select">
-                    <option value="lombardia">lombardia</option>
-                    <option value="lazio">lazio</option>
-                    <option value="sicilia">sicilia</option>
-                </select>
                 <select name="provincia" id="provincia" class="select">
-                    <option value="brescia">brescia</option>
-                    <option value="roma">roma</option>
-                    <option value="palermo">palermo</option>
+                    <script>
+                        function success(response) {
+                            province = JSON.parse(response).provinces2;
+                            let obj = document.getElementById("provincia");
+                            province.forEach(provincia => {
+                                let option = document.createElement("option");
+                                option.value = provincia;
+                                option.innerText = provincia;
+                                obj.appendChild(option);
+                            });
+                        }
+
+                        $.get('regions.json', success);
+                    </script>
                 </select>
                 <button id="searchbtn">SEARCH</button>
             </div>

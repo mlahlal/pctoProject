@@ -38,7 +38,6 @@ function postApplySuccess(response) {
 function prjSuccess(response) {
     if (response !== false) {
         document.getElementById("projects").innerHTML = "";
-        console.log(response);
         response.forEach((project) => {
             let prj = document.createElement("div");
             let prjTitle = document.createElement("span");
@@ -66,7 +65,7 @@ function prjSuccess(response) {
                         postApply: "1",
                         id_business: business.id_business,
                         id_project: project.id_project,
-                        id_user: "32182708-0547-11ef-a34e-c62f196bb7a8"
+                        id_user: localStorage.getItem("id")
                     },
                     success: postApplySuccess,
                 });
@@ -89,9 +88,21 @@ window.addEventListener("NewBusinessEvent", function () {
     $.ajax({
         url: "./includes/stdFunc.php",
         type: "post",
+        data: { openedBusiness: "1", id_business: business.id_business },
+        success: () => {},
+    });
+    $.ajax({
+        url: "./includes/stdFunc.php",
+        type: "post",
         data: { getProjects: "1", id_business: business.id_business },
         success: prjSuccess,
     });
+    console.log(business);
+    document.querySelector("#Business #nome").textContent = business.name;
+    document.querySelector("#Business #rappresentante").textContent = business.id_user;
+    document.querySelector("#Business #ambito").textContent = business.field;
+    document.querySelector("#Business #studenti").textContent = business.nstudent;
+    document.querySelector("#Business #sede").textContent = business.city;
 });
 
 // search.html
@@ -137,13 +148,36 @@ function searchSuccess(response) {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("searchbtn").addEventListener("click", () => {
         let searchtxt = document.getElementById("search_input").value;
-        let regione = document.getElementById("regione").value;
         let provincia = document.getElementById("provincia").value;
         $.ajax({
             url: './includes/stdFunc.php',
             type: 'post',
-            data: { "searchBusiness": "1", "search": searchtxt, "regione": regione, "provincia": provincia},
+            data: { "searchBusiness": "1", "search": searchtxt, "provincia": provincia},
             success: searchSuccess
+        });
+    });
+});
+
+// requests.php
+document.addEventListener("DOMContentLoaded", () => {
+    let links = document.querySelectorAll("#Requests .rectangle span a");
+    links.forEach((link, index) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            $.ajax({
+                url: 'http://localhost/pcto/includes/stdFunc.php',
+                type: 'post',
+                data: { getBusinessById: 1, id_business: link.id },
+                success: (response) => {
+                    console.log(response[0]);
+                    localStorage.setItem("business", JSON.stringify(response[0]));
+                    window.dispatchEvent(new Event("NewBusinessEvent"));
+                    document.querySelectorAll("main").forEach((frame) => {
+                        frame.style.display = "none";
+                    });
+                    document.getElementById("Business").style.display = "block";
+                }
+            });
         });
     });
 });

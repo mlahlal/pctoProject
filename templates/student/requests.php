@@ -6,7 +6,7 @@
                 foreach ($requests as $request) {
                     ?>
                     <div class="rectangle">
-                        <span><a href="" style="color: white;"><?php echo $request["name"]; ?></a></span>
+                        <span><a href="" style="color: white;" id="<?php echo $request["id_business"]; ?>"><?php echo $request["name"]; ?></a></span>
                         <div class="rectangleContent">
                             <span class="rectangleDesc"><?php echo $request["title"] ?></span>
                             <span class="rectangleSubtitle"><?php echo $request["accepted"] == "" ? "Pending" : ($request["accepted_bool"] == "true" ? "Accepted" : "Refused") ?></span>

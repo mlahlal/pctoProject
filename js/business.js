@@ -1,10 +1,25 @@
 // request.html
+function stdInfoSuccess(response) {
+    document.querySelector("#Student #nome").textContent = response[0].name + " " + response[0].surname;
+    document.querySelector("#Student #studio").textContent = response[0].field_of_study;
+    document.querySelector("#Student #provincia").textContent = response[0].province;
+    document.querySelector("#Student #scuola").textContent = response[0].id_school;
+    document.querySelector("#Student #email").textContent = response[0].email;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".rectangle > span > a").forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
+            alert(link.id);
             document.querySelectorAll("main").forEach((frame) => {
                 frame.style.display = "none";
+            });
+            $.ajax({
+                url: 'http://localhost/pcto/includes/bsnFunc.php',
+                type: 'post',
+                data: { getStudentInfo: 1, id_user: link.id },
+                success: stdInfoSuccess
             });
             document.getElementById("Student").style.display = "block";
         });
@@ -77,10 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
-// ricordati di aggiornare la pagina di progetti dopo aver fatto una modifica o aver creato uno nuovo
-
-
 
 // student.html
 document.addEventListener("DOMContentLoaded", () => {

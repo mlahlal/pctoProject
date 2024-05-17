@@ -8,9 +8,12 @@
 		header("Location: login.php");
 	}
 
+	echo "<script>localStorage.setItem('id', '".$_SESSION["id"]."');</script>";
+
 	$voices = ["Dashboard", "Requests", "Projects", "Profile"];
 	$trendBusiness = [["name"=>"Google", "ambito"=>"informatica", "sede"=>"Milano"]];
 	$projects = getProjects();
+	$requests = getStudentRequests();
 
 	require("components/sidebar.html");
 	require("templates/business/index.html");

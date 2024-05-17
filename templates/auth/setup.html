@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>SIGNUP</title>
+        <title>BUSINESS SETUP</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <link rel="stylesheet" href="css/global2.css">
         <style media="screen">
@@ -118,36 +118,26 @@
             <div class="shape"></div>
         </div>
         <form action="./includes/auth.php" method="post">
-            <h3>Sign Up Here</h3>
+            <h3>Setup business</h3>
 
             <div class="formBoxes">
                 <div>
-                    <input type="hidden" name="signup">
+                    <input type="hidden" name="setup">
     
-                    <label for="email">E-mail</label>
-                    <input type="text" placeholder="Email" id="email" name="email" />
+                    <label for="name">Name</label>
+                    <input type="text" placeholder="Name" id="name" name="name" />
     
-                    <label for="password">Password</label>
-                    <input type="password" placeholder="Password" id="password" name="password" />
+                    <label for="field">Field</label>
+                    <input type="text" placeholder="Field" id="field" name="field" />
     
-                    <label for="field_of_study">Indirizzo di studio (solo se studente)</label>
-                    <input type="text" placeholder="Indirizzo di studio" id="field_of_study" name="field_of_study" />
-    
-                    <label for="ruolo">Ruolo</label>
-                    <select name="ruolo" id="ruolo" name="ruolo" class="select">
-                        <option value="student">studente</option>
-                        <option value="delegate">azieda</option>
-                    </select>
+                    <label for="logo">Link to logo</label>
+                    <input type="text" placeholder="Link to logo" id="logo" name="logo" />
                 </div>
                 <div>
-                    <label for="nome">Nome</label>
-                    <input type="text" placeholder="Nome" id="nome" name="nome" />
-    
-                    <label for="cognome">Cognome</label>
-                    <input type="text" placeholder="Cognome" id="cognome" name="cognome" />
-    
-                    <label for="telefono">Numero di telefono</label>
-                    <input type="text" placeholder="Numero di telefono" id="telefono" name="telefono" />
+                    <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+
+                    <label for="address">Address</label>
+                    <input type="text" placeholder="Address" id="address" name="address" />
     
                     <label for="provincia">Provincia</label>
                     <select name="provincia" id="provincia" class="select">
@@ -169,10 +159,7 @@
                 </div>
             </div>
 
-            <button>Sign Up</button>
-            <div class="login">
-                <a href="login.php">Accedi</a>
-            </div>
+            <button>Setup</button>
         </form>
     </body>
 </html>

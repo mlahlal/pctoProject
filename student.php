@@ -3,15 +3,18 @@
 	require "./includes/auth.php";
     require "./includes/stdFunc.php";
 
-    if (isset($_SESSION["user"]) && $_SESSION["user"]["type"] == "studente") {
+    if (isset($_SESSION["user"]) && $_SESSION["user"]["type"] == "student") {
 	} else {
 		header("Location: login.php");
 	}
+
+    echo "<script>localStorage.setItem('id', '".$_SESSION["id"]."');</script>";
 	
     $voices = ["Dashboard", "Search", "Requests", "Profile"];
     $trendBusiness = getTrendBusiness();
 	$newBusiness = getNewBusiness();
     $requests = getRequests();
+
 	
     require("components/sidebar.html");
 	require("templates/student/index.html");

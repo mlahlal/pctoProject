@@ -2,7 +2,7 @@
 
 	function redirect($type) {
 		switch($type) {
-			case "studente":
+			case "student":
 				header("Location: http://localhost/pcto/student.php");
 				break;
 			case "delegate":
@@ -38,6 +38,7 @@
 
 	function signup() {
 		require_once "db.php";
+		session_start();
 		$email = $_POST["email"];
 		$password = $_POST["password"];
 		$password_hashed = password_hash($password, PASSWORD_BCRYPT);
@@ -47,12 +48,51 @@
 		$telefono = $_POST["telefono"];
 		$provincia = $_POST["provincia"];
 		$studio = $_POST["field_of_study"];
-		
-		$sql = "INSERT INTO users (email, password, name, surname, telephone, province, field_of_study, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		$data = [$email, $password_hashed, $nome, $cognome, $telefono, $provincia, $studio, $ruolo];
+
+		if ($ruolo == "student") {
+			$domain = substr($email, strpos($email, "@") + 1);
+			$sql = "SELECT id_school, name FROM school WHERE mail_domain=?";
+			$data = [$domain];
+			$result = query($sql, $data);
+
+			if (is_array($result) && sizeof($result) > 0) {
+				$sql = "INSERT INTO users (email, password, name, surname, telephone, province, field_of_study, type, id_school) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				$data = [$email, $password_hashed, $nome, $cognome, $telefono, $provincia, $studio, $ruolo, $result[0]["id_school"]];
+				$result = query($sql, $data);
+				
+				header("Location: http://localhost/pcto/login.php");
+			} else {
+				echo "<script>alert('La tua scuola non è iscritta');location.replace('http://localhost/pcto/signup.php');</script>";
+			}
+		} else {
+			$sql = "INSERT INTO users (email, password, name, surname, telephone, province, type) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			$data = [$email, $password_hashed, $nome, $cognome, $telefono, $provincia, $ruolo];
+			$result = query($sql, $data);
+			$_SESSION["email"] = $email;
+			header("Location: http://localhost/pcto/setup.php");
+		}
+	}
+
+	function setup() {
+		require_once "db.php";
+		$email = $_POST["email"];
+		$nome = $_POST["name"];
+		$field = $_POST["field"];
+		$logo = $_POST["logo"];
+		$address = $_POST["address"];
+		$provincia = $_POST["provincia"];
+
+		$sql = "SELECT id_user FROM users WHERE email=?";
+		$data = [$email];
 		$result = query($sql, $data);
-		
-		header("Location: http://localhost/pcto/index.php");
+
+		$id_user = $result[0]["id_user"];
+
+		$sql = "INSERT INTO business (name, id_user, field, logo, email, province, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$data = [$nome, $id_user, $field, $logo, $email, $provincia, $address];
+		$result = query($sql, $data);
+
+		header("Location: http://localhost/pcto/business.php");
 	}
 
 	if (isset($_POST["login"])) {
@@ -60,5 +100,8 @@
 	}
 	if (isset($_POST["signup"])) {
 		signup();
+	}
+	if (isset($_POST["setup"])) {
+		setup();
 	}
 ?>
