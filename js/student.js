@@ -102,7 +102,7 @@ window.addEventListener("NewBusinessEvent", function () {
     document.querySelector("#Business #rappresentante").textContent = business.id_user;
     document.querySelector("#Business #ambito").textContent = business.field;
     document.querySelector("#Business #studenti").textContent = business.nstudent;
-    document.querySelector("#Business #sede").textContent = business.city;
+    document.querySelector("#Business #sede").textContent = business.province;
 });
 
 // search.html

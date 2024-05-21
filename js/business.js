@@ -1,10 +1,12 @@
 // request.html
-function stdInfoSuccess(response) {
+function stdInfoSuccess(response, id_user, id_prj) {
     document.querySelector("#Student #nome").textContent = response[0].name + " " + response[0].surname;
     document.querySelector("#Student #studio").textContent = response[0].field_of_study;
     document.querySelector("#Student #provincia").textContent = response[0].province;
     document.querySelector("#Student #scuola").textContent = response[0].id_school;
     document.querySelector("#Student #email").textContent = response[0].email;
+    document.querySelector("#Student #id_user").value = id_user;
+    document.querySelector("#Student #id_project").value = id_prj;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: 'http://localhost/pcto/includes/bsnFunc.php',
                 type: 'post',
                 data: { getStudentInfo: 1, id_user: link.id },
-                success: stdInfoSuccess
+                success: (response) => {
+                    let id_prj = document.getElementById(`prj-${link.id}`).value;
+                    stdInfoSuccess(response, link.id, id_prj);
+                }
             });
             document.getElementById("Student").style.display = "block";
         });
@@ -59,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $.ajax({
             url: './includes/bsnFunc.php',
             type: 'post',
-            data: { newProject: 1, titolo: titolo, descrizione: descrizione, id_business: "1312" },
+            data: { newProject: 1, titolo: titolo, descrizione: descrizione, id_business: localStorage.getItem("id_business") },
             success: newPrjSuccess
         });
     });
@@ -99,16 +104,28 @@ document.addEventListener("DOMContentLoaded", () => {
         $.ajax({
             url: './includes/bsnFunc.php',
             type: 'post',
-            data: { refuseRequest: 1, id_user: "32182708-0547-11ef-a34e-c62f196bb7a8", id_project: "" },
-            success: () => {}
+            data: { refuseRequest: 1, id_user: document.getElementById("id_user").value, id_project: document.getElementById("id_project").value, id_business: localStorage.getItem("id_business") },
+            success: () => {
+                alert("Richiesta rifiutata");
+                document.querySelectorAll("main").forEach((frame) => {
+                    frame.style.display = "none";
+                });
+                document.getElementById("Dashboard").style.display = "block";
+            }
         });
     });
     document.getElementById("btnAccetta").addEventListener("click", () => {
         $.ajax({
             url: './includes/bsnFunc.php',
             type: 'post',
-            data: { acceptRequest: 1, id_user: "32182708-0547-11ef-a34e-c62f196bb7a8", id_project: "" },
-            success: () => {}
+            data: { acceptRequest: 1, id_user: document.getElementById("id_user").value, id_project: document.getElementById("id_project").value, id_business: localStorage.getItem("id_business") },
+            success: () => {
+                alert("Richiesta accettata");
+                document.querySelectorAll("main").forEach((frame) => {
+                    frame.style.display = "none";
+                });
+                document.getElementById("Dashboard").style.display = "block";
+            }
         });
     });
 });

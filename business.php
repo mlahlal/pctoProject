@@ -8,10 +8,14 @@
 		header("Location: login.php");
 	}
 
+	$mybusiness = getMyBusiness();
+
 	echo "<script>localStorage.setItem('id', '".$_SESSION["id"]."');</script>";
+	echo "<script>localStorage.setItem('id_business', '".$mybusiness[0]["id_business"]."');</script>";
+	$_SESSION["id_business"] = $mybusiness[0]["id_business"];
+
 
 	$voices = ["Dashboard", "Requests", "Projects", "Profile"];
-	$trendBusiness = [["name"=>"Google", "ambito"=>"informatica", "sede"=>"Milano"]];
 	$projects = getProjects();
 	$requests = getStudentRequests();
 
