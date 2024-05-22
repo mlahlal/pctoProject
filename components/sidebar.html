@@ -157,7 +157,7 @@
 
 <div id="nav-bar">
     <div id="nav-header">
-        <span id="nav-title">KOSSOMMAK</span>
+        <span id="nav-title">INTERNIFY</span>
         <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
         <hr />
     </div>
@@ -179,8 +179,8 @@
                 />
             </div>
             <div id="nav-footer-titlebox">
-                llmad
-                <span id="nav-footer-subtitle">kapogang</span>
+                <?php echo $_SESSION["user"]["name"] . " " . $_SESSION["user"]["surname"]; ?>
+                <span id="nav-footer-subtitle"><?php echo $_SESSION["user"]["type"]; ?></span>
             </div>
         </div>
     </div>

@@ -3,16 +3,16 @@
 	function redirect($type) {
 		switch($type) {
 			case "student":
-				header("Location: http://localhost/pcto/student.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/student.php");
 				break;
 			case "delegate":
-				header("Location: http://localhost/pcto/business.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/business.php");
 				break;
 			case "school":
-				header("Location: http://localhost/pcto/index.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/index.php");
 				break;
 			default:
-				header("Location: http://localhost/pcto/login.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/login.php");
 				break;
 		}
 	}
@@ -32,7 +32,7 @@
 			$_SESSION["user"] = $result;
 			redirect($result["type"]);
 		} else {
-			header("Location: http://localhost/pcto/login.php");
+			header("Location: http://internify.lahlalmouad.it/pcto/login.php");
 		}
 	}
 
@@ -60,16 +60,16 @@
 				$data = [$email, $password_hashed, $nome, $cognome, $telefono, $provincia, $studio, $ruolo, $result[0]["id_school"]];
 				$result = query($sql, $data);
 				
-				header("Location: http://localhost/pcto/login.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/login.php");
 			} else {
-				echo "<script>alert('La tua scuola non è iscritta');location.replace('http://localhost/pcto/signup.php');</script>";
+				echo "<script>alert('La tua scuola non è iscritta');location.replace('http://internify.lahlalmouad.it/pcto/signup.php');</script>";
 			}
 		} else {
 			$sql = "INSERT INTO users (email, password, name, surname, telephone, province, type) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			$data = [$email, $password_hashed, $nome, $cognome, $telefono, $provincia, $ruolo];
 			$result = query($sql, $data);
 			$_SESSION["email"] = $email;
-			header("Location: http://localhost/pcto/setup.php");
+			header("Location: http://internify.lahlalmouad.it/pcto/setup.php");
 		}
 	}
 
@@ -92,7 +92,7 @@
 		$data = [$nome, $id_user, $field, $logo, $email, $provincia, $address];
 		$result = query($sql, $data);
 
-		header("Location: http://localhost/pcto/business.php");
+		header("Location: http://internify.lahlalmouad.it/pcto/business.php");
 	}
 
 	if (isset($_POST["login"])) {

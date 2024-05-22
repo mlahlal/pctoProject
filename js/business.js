@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 frame.style.display = "none";
             });
             $.ajax({
-                url: 'http://localhost/pcto/includes/bsnFunc.php',
+                url: 'http://internify.lahlalmouad.it/pcto/includes/bsnFunc.php',
                 type: 'post',
                 data: { getStudentInfo: 1, id_user: link.id },
                 success: (response) => {

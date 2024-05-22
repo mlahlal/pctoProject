@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             $.ajax({
-                url: 'http://localhost/pcto/includes/stdFunc.php',
+                url: 'http://internify.lahlalmouad.it/pcto/includes/stdFunc.php',
                 type: 'post',
                 data: { getBusinessById: 1, id_business: link.id },
                 success: (response) => {

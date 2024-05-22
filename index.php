@@ -5,16 +5,16 @@
 		$type = $_SESSION["user"]["type"];
 		switch($type) {
 			case "student":
-				header("Location: http://localhost/pcto/student.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/student.php");
 				break;
 			case "delegate":
-				header("Location: http://localhost/pcto/business.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/business.php");
 				break;
 			case "school":
-				header("Location: http://localhost/pcto/index.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/index.php");
 				break;
 			default:
-				header("Location: http://localhost/pcto/login.php");
+				header("Location: http://internify.lahlalmouad.it/pcto/login.php");
 				break;
 		}
 	} else {
